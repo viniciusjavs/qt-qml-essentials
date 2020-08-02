@@ -8,7 +8,7 @@
 
 * ##### QT MODULES
     - [ ] The need for *cross [platforms](supported_platforms.md) libraries*
-    - [ ] Overview of Qt *modules* and their key functionality
+    - [ ] Overview of [Qt *modules*](modules.md) and their key functionality
     - [ ] The difference between *native APIs* and *cross platform APIs*
     - [ ] The difference between *toolkits* and *frameworks*
 
