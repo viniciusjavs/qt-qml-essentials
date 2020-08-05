@@ -1,5 +1,7 @@
 ### QT AND QML ESSENTIALS 010-003 - Exam Curriculum
-
+0. #### WHAT IS *QT*?
+	[Qt definition](definition.md) from:
+	- Arch Wiki
 1. #### FUNDAMENTALS OF *QT* AND *QML* PROGRAMMING
 - [ ] Create, build and debug Qt and QML apps. through **QtCreator**
 - [ ] Qt **modules**
