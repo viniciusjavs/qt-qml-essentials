@@ -13,7 +13,7 @@
 
 |Module| Description|
 |--|--|
-|**Qt Core**| Core non-graphical classess used by other modules.|
+|**Qt Core**| Core non-graphical classes used by other modules.|
 |**Qt GUI**| Base classes for graphical user interface (GUI) components. (Includes OpenGL)|
 |**Qt Multimedia**| Classes for audio, video, radio and camera functionality.|
 |**Qt Multimedia Widgets**| Widget-based classes for implementing multimedia functionality. (It provides additional multimedia-related widgets and controls. The classes expand the capabilities of the *Qt Multimedia* and *Qt Widgets*)|
@@ -26,7 +26,7 @@
 |**Qt Quick Test**| A unit test framework for QML applications, where the test cases are written as JavaScript functions.|
 |**Qt SQL**| Classes for database integration using SQL|
 |**Qt Test**| Classes for unit testing Qt applications and libraries.|
-|**Qt Widgets**| Classess to extend Qt GUI with C++ widgets.|
+|**Qt Widgets**| Classes to extend Qt GUI with C++ widgets.|
 
 ##### ```qmake```
 
