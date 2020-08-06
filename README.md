@@ -11,7 +11,7 @@
 * ##### QT MODULES
     - [x] The need for *[cross](cross_platform.md) [platforms](supported_platforms.md) libraries*
     - [x] Overview of [Qt *modules*](modules.md) and their key functionality
-    - [ ] The difference between *native APIs* and *cross platform APIs*
+    - [x] The difference between [*native APIs* and *cross platform APIs*](cross_platform.md#cross-platform-vs-native-apis)
     - [ ] The difference between *toolkits* and *frameworks*
 
 * ##### QT LICENSING
