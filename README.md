@@ -9,7 +9,7 @@
 - [ ] QObject's **meta-object** system, **properties** and **event handling**
 
 * ##### QT MODULES
-    - [ ] The need for *cross [platforms](supported_platforms.md) libraries*
+    - [x] The need for *[cross](cross_platform.md) [platforms](supported_platforms.md) libraries*
     - [x] Overview of [Qt *modules*](modules.md) and their key functionality
     - [ ] The difference between *native APIs* and *cross platform APIs*
     - [ ] The difference between *toolkits* and *frameworks*
