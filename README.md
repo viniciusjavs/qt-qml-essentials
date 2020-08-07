@@ -2,8 +2,8 @@
 
 0. #### WHAT IS *QT*?
 	[Qt definition](definition.md) from:
-	- Arch Wiki
-	- Wikipedia
+	- [Arch Wiki](definition.md#from-arch-wiki)
+	- [Wikipedia](definition.md#from-wikipedia)
 
 
 1. #### FUNDAMENTALS OF *QT* AND *QML* PROGRAMMING
