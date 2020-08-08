@@ -18,11 +18,11 @@
     - [x] The difference between [*native APIs* and *cross platform APIs*](cross_platform.md#cross-platform-vs-native-apis)
     - [x] The difference between [*toolkits* and *frameworks*](definition.md#toolkit-vs-framework)
 
-* ##### QT LICENSING
-    - [ ] Know Qt licesing options: GPL, LGPL, commercial
-    - [ ] Understand how to choose the right license
-    - [ ] Understand the difference between application development and device creating licenses
-    - [ ] Basic differences between GPLv2, GPLv3, LGPLv2.1, and LGPLv3
+* ##### QT [LICENSING](licensing.md)
+    - [x] Know Qt [licensing](licensing.md#license-models) options: GPL, LGPL, commercial
+    - [x] Understand how to choose the [right license](licensing.md#application-development)
+    - [x] Understand the difference between [application development and device creating licenses](licensing.md#application-development-vs-device-creation-licenses)
+    - [x] Basic differences between [GPLv2, GPLv3, LGPLv2.1, and LGPLv3](licensing.md#open-source-licensing)
 
 
 2. #### ESSENTIAL QT CORE CLASSES
