@@ -25,7 +25,7 @@
     - [x] Basic differences between [GPLv2, GPLv3, LGPLv2.1, and LGPLv3](licensing.md#open-source-licensing)
 
 * ##### BASIC DEVELOPMENT STEPS
-	- [] Simple application creation using wizards in *QtCreator*: widget-based and QML-based
+    - [x] Simple application creation using wizards in *QtCreator*: [widget-based](https://wiki.qt.io/Basic_Qt_Programming_Tutorial) and [QML-based](https://doc.qt.io/qtcreator/quick-projects.html)
 	- [] Documentation, community, and other sources for help
 	- [] Qt project file (.pro) creation and management
 	- [] *qmake*: key variables, basic syntax, and variable values
