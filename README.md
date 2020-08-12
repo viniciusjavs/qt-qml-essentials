@@ -26,7 +26,7 @@
 
 * ##### BASIC DEVELOPMENT STEPS
     - [x] Simple application creation using wizards in *QtCreator*: [widget-based](https://wiki.qt.io/Basic_Qt_Programming_Tutorial) and [QML-based](https://doc.qt.io/qtcreator/quick-projects.html)
-	- [] Documentation, community, and other sources for help
+    - [x] [Documentation](https://doc.qt.io), [community](https://forum.qt.io), and [other](https://doc.qt.io/qt-5/qtassistant-index.html) [sources](https://wiki.qt.io/Online_Communities) for help
 	- [] Qt project file (.pro) creation and management
 	- [] *qmake*: key variables, basic syntax, and variable values
 	- [] Basic development and build tools: *Qt Designer*, *Qt Help*, *Qt Linguist*, *qmake*, *Makefiles*, *moc*, *uic*.
