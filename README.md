@@ -24,6 +24,12 @@
     - [x] Understand the difference between [application development and device creating licenses](licensing.md#application-development-vs-device-creation-licenses)
     - [x] Basic differences between [GPLv2, GPLv3, LGPLv2.1, and LGPLv3](licensing.md#open-source-licensing)
 
+* ##### BASIC DEVELOPMENT STEPS
+	- [] Simple application creation using wizards in *QtCreator*: widget-based and QML-based
+	- [] Documentation, community, and other sources for help
+	- [] Qt project file (.pro) creation and management
+	- [] *qmake*: key variables, basic syntax, and variable values
+	- [] Basic development and build tools: *Qt Designer*, *Qt Help*, *Qt Linguist*, *qmake*, *Makefiles*, *moc*, *uic*.
 
 2. #### ESSENTIAL QT CORE CLASSES
 
