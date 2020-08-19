@@ -125,6 +125,248 @@ The **paths** that ```qmake``` searches for libraries and the **specific librari
 	LIBS += -L/usr/local/lib
 	LIBS += -lmath
 
+
+#### qmake Language
+Besides the basic functionality of decribing `names` and `values`, `qmake` also employs advanced features such as functions, scopes and other operators. That allow the generation of Makefiles for multiple platforms.
+
+##### Operators
+- Assign Values
+
+		TARGET = myapp
+
+- Append Values
+
+		DEFINES += USE_MY_STUFF
+
+- Remove Values
+
+		DEFINES -= USE_MY_STUFF
+
+- Add **Unique** Values
+
+		DEFINES *= USE_MY_STUFF
+
+- Replace Values
+
+		DEFINES ~= s/QT_[DT].+/QT
+
+	Any values in the list that start with `QT_D` or `QT_T` are replaced with `QT`.
+
+	It replaces any values that **match** a **regular expression** with the specified value.
+
+- Variable Expansion
+
+		EVERYTHING = 	$$SOURCES $$HEADERS
+		message("The project contains the following files:")
+		message($$EVERYTHING)
+
+	To obtain the contents of an **environment variable**, use the **`$$(...)`** operator:
+
+		DESTDIR = $$(PWD)
+		message(The project will be installed in $$DESTDIR)
+
+	To obtain the contents of an **environment variable** at the time that the **`Makefile`** is **processed**, use the **`$(...)`** operator.
+
+		DESTDIR = $$(PWD)
+		message(The project will be installed in $$DESTDIR)
+
+		DESTDIR = $(PWD)
+		message(The project will be installed in the value of PWD)
+		message(when the Makefile is processed.)
+
+	This makes the build process more flexible as long as the environment variable is set correctly when the **`Makefile` is processed**.
+
+- Access `qmake` Properties
+
+	The special `$$[...]` operator can be used to access `qmake` properties.
+
+		message(Qt version: $$[QT_VERSION])
+		message(Qt is installed in $$[QT_INSTALL_PREFIX])
+		message(Qt resources can be found in the following locations:)
+		message(Documentation: $$[QT_INSTALL_DOCS])
+		message(Header files: $$[QT_INSTALL_HEADERS])
+		message(Libraries: $$[QT_INSTALL_LIBS])
+		message(Binary files (executables): $$[QT_INSTALL_BINS])
+		message(Plugins: $$[QT_INSTALL_PLUGINS])
+		message(Data files: $$[QT_INSTALL_DATA])
+			message(Translation files: $$[QT_INSTALL_TRANSLATIONS])
+		message(Settings: $$[QT_INSTALL_CONFIGURATION])
+		message(Examples: $$[QT_INSTALL_EXAMPLES])
+
+##### Scopes
+If a certain condition is `true`, the declarations inside the scope are processed.
+
+- Syntax
+
+		<condition> {
+			<command or definition>
+			...
+		}
+
+- Conditions
+
+		win32 {
+			SOURCES += paintwidget_win.cpp
+		}
+
+		# negated condition
+		!win32 {
+			SOURCES -= paintwidget_win.cpp
+		}
+
+		# nested conditions
+		macx {
+			CONFIG(debug, degub|release) {
+				HEADERS += debugging.h
+			}
+		}
+
+		# can be rewritten as
+		macx:CONFIG(debug, debug|release) {
+			HEADERS += debugging.h
+		}
+
+		# single line condition
+		win32:DEFINES += USE_MY_STUFF
+
+	The `:` operator behaves like a logical `AND` operator, joining together a number of conditions, and requiring all of them to be true.
+
+	There is also the `|` operator that acts like a logical `OR` operator, joining together a number os conditions, and requiring only one of them to be true.
+
+		win32|macx {
+			HEADERS += debugging.h
+		}
+
+	The `if` function can be used do **mix**	 both operators:
+
+		if(win32|macos):CONFIG(debug, debug|release) {
+			# Do something on Windows and macOS,
+			# but only for the debug configuration
+		}
+		win32|if(macos:CONFIG(debug, debug|release)){
+			# Do something on Windows (regardless of debug or release)
+			# and on macOS (only for debug)
+		}
+
+	The condition accepts the wildcard character to match a family of `CONFIG` values or `mkspec` names.
+
+		win32-* {
+			# Matches every mkspec starting with "win32-"
+			SOURCES += win32_specific.cpp
+		}
+
+	A `else` scope can be processed if the conditions for the preceding scopes are false.
+
+		win32:xml {
+			message(Building for Windows)
+			SOURCES += xmlhandler_win.cpp
+		} else:xml {
+			SOURCES += xmlhandler.cpp
+		} else {
+			message("Unknown configuration")
+		}
+
+- Configurations
+
+	Each of the possible values of the `CONFIG` variable can be used as the **condition for a scope**.
+
+		CONFIG += opengl
+
+		opengl {
+			TARGET = application-gl
+		} else {
+			TARGET = application
+		}
+
+	Note: It is possible to use your own values on the `CONFIG` line.
+
+- Platform Scope Values
+
+	+ **win32**
+	+ **macx**
+	+ **unix**
+	+ various other based on platform specifications provided in Qt's `mkspecs` directory.
+
+	```
+	message($$QMAKESPEC)
+
+	linux-g++ {
+		message(Linux)
+	}
+	```
+
+##### Variables
+
+- DEFINES
+- SOURCES
+- HEADERS
+
+```
+MY_VARIABLE = value
+
+MY_DEFINES = $$DEFINES
+
+# append without separating with a space
+
+TARGET = myproject_$${TEMPLATE}
+```
+
+##### Replaces Functions
+
+	HEADERS = model.h
+	# same result as
+	# HEADERS *= $$OTHER_HEADERS
+	HEADERS += $$OTHER_HEADERS
+	HEADERS = $$unique(HEADERS)
+
+You can define your own functions for processing the contents of variables as follows:
+
+	defineReplace(functionName) {
+		# function code
+	}
+
+The following example takes a variable name as its only argument, extracts a list of values from it with `eval()`, and return a list of files.
+
+	defineReplace(headerAndSource) {
+		variable = $$1
+		names = $$eval($$variable)
+		headers =
+		sources =
+
+		for (name, names){
+			header = $${name}.h
+			exists($$header) {
+				headers += $$header
+			}
+			source = $${name}.cpp
+			exists($$souce) {
+				sources += $$source
+			}
+		}
+		return($$headers $$sources)
+	}
+
+##### Test Functions
+
+These functions do not return a value, but instead indicate *success* or *failure*
+
+	count(options, 2) {
+		message(Both release and debug specified.)
+	}
+
+The following funtion tests whether each file in a list exists and returns *true* if they all exist, or *false* otherwise:
+
+	defineTest(allFiles) {
+		files = $$ARGS
+
+		for(file, files) {
+			!exists($$file) {
+				return(false)
+			}
+		}
+		return(true)
+	}
+
 #### References
 
 [https://doc.qt.io/qt-5/qmake-project-files.html](https://doc.qt.io/qt-5/qmake-project-files.html)
