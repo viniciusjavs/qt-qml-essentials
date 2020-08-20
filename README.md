@@ -29,7 +29,7 @@
     - [x] [Documentation](https://doc.qt.io), [community](https://forum.qt.io), and [other](https://doc.qt.io/qt-5/qtassistant-index.html) [sources](https://wiki.qt.io/Online_Communities) for help
     - [x] [Qt project file (.pro) creation and management](qmake.md#creating-project-files-pro)
     - [x] *qmake*: [key variables, basic syntax, and variable values](qmake.md#qmake-language)
-	- [] Basic development and build tools: *Qt Designer*, *Qt Help*, *Qt Linguist*, *qmake*, *Makefiles*, *moc*, *uic*.
+    - [x] Basic [development and build tools](https://doc.qt.io/qt-5/topics-app-development.html): [*Qt Designer*](https://doc.qt.io/qt-5/qtdesigner-manual.html), [*Qt Help*](https://doc.qt.io/qt-5/qtassistant-index.html), [*Qt Linguist*](https://doc.qt.io/qt-5/qtlinguist-index.html), [*qmake*, *Makefiles*](qmake.md), [*moc*](https://doc.qt.io/qt-5/why-moc.html), [*uic*](https://doc.qt.io/qt-5/uic.html).
 
 2. #### ESSENTIAL QT CORE CLASSES
 
